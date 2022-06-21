@@ -20,6 +20,7 @@ module "mysql" {
   VPC_ID              = module.vpc.VPC_ID
   VPC_CIDR            = module.vpc.VPC_CIDR
   SUBNET_IDS          = module.vpc.SUBNET_IDS
+  PRIVATE_HOSTED_ZONE_ID  = module.vpc.PRIVATE_HOSTED_ZONE_ID
 }
 
 module "app" {
@@ -37,6 +38,7 @@ module "app" {
   WORKSTATION_IP          = var.WORKSTATION_IP
   VPC_ACCESS_TO_ALB       = [module.vpc.VPC_CIDR]
   PRIVATE_HOSTED_ZONE_ID  = module.vpc.PRIVATE_HOSTED_ZONE_ID
+  IAM_POLICY_CREATE       = true
 }
 
 
